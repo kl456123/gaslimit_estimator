@@ -1,9 +1,6 @@
 import { ethers } from "ethers";
 import { estimateUnitLimitTest } from "../src/solana_utils";
 import { estimateFeeTest } from "../src/bitcoin_utils";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 enum Chain {
   Ethereum,

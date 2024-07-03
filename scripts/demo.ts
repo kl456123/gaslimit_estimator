@@ -68,7 +68,7 @@ async function main() {
         break;
       }
       case Chain.BTC: {
-          // tx bytes instead of consumed resource
+        // tx bytes instead of consumed resource
         gasLimit = await estimateFeeTest(rpcUrl);
         break;
       }

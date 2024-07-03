@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@solana/web3.js": "^1.94.0",
+    "bitcoinjs-lib": "^6.1.6",
+    "bs58": "^6.0.0",
+    "dotenv": "^16.4.5",
+    "ecpair": "^2.1.0",
+    "ethers": "^6.13.1",
+    "tiny-secp256k1": "^2.2.3",
+    "web3": "^4.10.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "scripts": {
+      "prettier": "prettier --write src/ scripts/"
+  }
+}

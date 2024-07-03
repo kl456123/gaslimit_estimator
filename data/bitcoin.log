@@ -1,0 +1,38 @@
+
+
+
+// estimatesmartfee
+{
+  id: null,
+  jsonrpc: '2.0',
+  result: { feerate: 0.00008869, blocks: 10 }
+}
+
+// getblockchaininfo
+{
+  id: null,
+  jsonrpc: '2.0',
+  result: {
+    chain: 'main',
+    blocks: 850350,
+    headers: 850350,
+    bestblockhash: '000000000000000000000752247b12d14603fdec2b482d5b6a9d9ad1f20a7d76',
+    difficulty: 83675262295059.9,
+    time: 1719907070,
+    mediantime: 1719902971,
+    verificationprogress: 0.9999915415122652,
+    initialblockdownload: false,
+    chainwork: '0000000000000000000000000000000000000000816875d1fa0b4a8627e9853b',
+    size_on_disk: 661970026461,
+    pruned: false,
+    warnings: ''
+  }
+}
+
+
+// getrawtransaction
+{
+  id: null,
+  jsonrpc: '2.0',
+  result: '02000000000101de8045d6230d01a8e24eecd10738e01958cf028fa0869ca4b83ff36a6b203a240100000000ffffffff0240420f00000000001976a9141610a81c83092ae6c0f2d157dabdaf2081759c2788ac162c000000000000225120137455fdffc7e523320d61f1894b569a1c655deb514a3ffeb66f82f354af1ead0140e924c1a31cabad820d64d3f5e6988f35427d253753ae89d0af6add1586adcffd36260371441f31ae76792848989beb070f8bda9f03122f2a10b9ae11b14cd5e400000000'
+}

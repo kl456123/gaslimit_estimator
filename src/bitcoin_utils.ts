@@ -65,7 +65,7 @@ async function fetchTx(provider: HttpProvider, txHash: string | Buffer) {
 
 export async function estimateFeeTest(url: string) {
   const network = bitcoin.networks.bitcoin;
-  const keypair = ECPair.makeRandom({network});
+  const keypair = ECPair.makeRandom({ network });
   const tweakedSigner = tweakSigner(keypair, { network });
   const p2pktr = bitcoin.payments.p2tr({
     pubkey: toXOnly(tweakedSigner.publicKey),

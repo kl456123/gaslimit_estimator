@@ -44,3 +44,10 @@ estimated gas limit: 21012
 processing BTC[https://bitcoin.drpc.org]
 estimated gas limit: 145
 ```
+
+* draw all gaslimit data points
+```python
+python scripts/draw.py
+```
+
+![alt text](./data/gasLimit.png "gasLimit")

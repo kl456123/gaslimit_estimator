@@ -17,6 +17,6 @@ export enum Chain {
   Scroll,
   Mode,
   Metis = 1088,
-  BTC,
+  BTC
 }
-export type RpcUrlMapping = Partial<{ [chain in Chain]: string }>;
+export type UrlMapping = Partial<{ [chain in Chain]: string }>

@@ -51,11 +51,10 @@ export const rpcUrls: UrlMapping = {
   [Chain.Klaytn]: 'https://archive-en.cypress.klaytn.net'
 }
 
-
 export const etherscanUrls: UrlMapping = {
-    [Chain.Ethereum]: 'https://api.etherscan.io/api',
-    [Chain.Optimism]: 'https://api-optimistic.etherscan.io/api',
-    [Chain.Arbitrum]: 'https://api.arbiscan.io/api',
-    [Chain.Base]: 'https://api.basescan.org/api',
-    [Chain.BSC]: 'https://api.bscscan.com/api',
+  [Chain.Ethereum]: 'https://api.etherscan.io/api',
+  [Chain.Optimism]: 'https://api-optimistic.etherscan.io/api',
+  [Chain.Arbitrum]: 'https://api.arbiscan.io/api',
+  [Chain.Base]: 'https://api.basescan.org/api',
+  [Chain.BSC]: 'https://api.bscscan.com/api'
 }

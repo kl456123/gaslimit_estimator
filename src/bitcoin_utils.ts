@@ -71,7 +71,7 @@ async function fetchTx(
   return tx
 }
 
-export async function estimateFeeTest(url: string) {
+export async function estimateFeeTest(url: string, numInputs = 2) {
   const network = bitcoin.networks.bitcoin
   const keypair = ECPair.makeRandom({ network })
   const tweakedSigner = tweakSigner(keypair, { network })
@@ -79,39 +79,56 @@ export async function estimateFeeTest(url: string) {
     pubkey: toXOnly(tweakedSigner.publicKey),
     network
   })
+
   const provider = new HttpProvider(url)
 
-  const txHash =
-    '53c22e7e665a63050ad674246b790e56e70095eb7b5c753585095e798e0be2a1'
-  const tx = await fetchTx(provider, txHash)
-  const outputs: { script: Buffer; value: number }[] = []
-  tx.outs.forEach((output) => {
-    outputs.push({ script: output.script, value: output.value })
+  // generate mock utxos
+  const utxos: { hash: string; value: number; index: number }[] = []
+  for (let i = 0; i < numInputs; ++i) {
+    const hash = ethers.hexlify(ethers.randomBytes(32)).slice(2)
+    const value = Math.round(Math.random() * 1e7)
+    const index = 0
+    utxos.push({ hash, value, index })
+  }
+  // generate inputs according to previous utxos
+  const inputs = utxos.map((utxo) => {
+    return {
+      hash: utxo.hash,
+      index: utxo.index,
+      witnessUtxo: {
+        value: utxo.value,
+        script: p2pktr.output!
+      },
+      tapInternalKey: toXOnly(keypair.publicKey)
+    }
   })
-  const prevTx = await fetchTx(
-    provider,
-    tx.ins[0].hash.reverse().toString('hex')
-  )
+
+  const totalValue = utxos.reduce((acc, cur) => (acc += cur.value), 0)
+  const outputs: { script: Buffer; value: number }[] = []
+  const bridgedAmount = 1
+  // bridge btc to other chains by binance bridge
+  const p2pkh = bitcoin.payments.p2pkh({
+    address: '1DveSJgEWmUKWLPiZzA3CNnitpkJgAAxnV',
+    network
+  })
+  outputs.push({ script: p2pkh.output!, value: bridgedAmount })
+  outputs.push({
+    script: p2pktr.output!,
+    value: totalValue - bridgedAmount
+  })
 
   // build transfer transaction(PBST)
   const txb = new bitcoin.Psbt({ network })
   // add utxo
-  txb.addInput({
-    hash: tx.ins[0].hash,
-    index: tx.ins[0].index,
-    witnessUtxo: {
-      value: prevTx.outs[tx.ins[0].index].value,
-      script: p2pktr.output!
-    },
-    tapInternalKey: toXOnly(keypair.publicKey)
-  })
-  txb.addOutputs(outputs)
-
-  txb.signInput(0, tweakedSigner)
-  txb.finalizeAllInputs()
-  const expectedTx = txb.extractTransaction()
+  const expectedTx = txb
+    .addInputs(inputs)
+    .addOutputs(outputs)
+    .signAllInputs(tweakedSigner)
+    .finalizeAllInputs()
+    .extractTransaction(true)
   // check virtual size is computed correctly
-  assert(expectedTx.virtualSize() == tx.virtualSize())
   // https://github.com/bitcoinjs/bitcoinjs-lib/blob/2013f198c0d3586b8c18d9b1e28f2e6fa7711863/src/transaction.js#L151-L177
-  return BigInt(expectedTx.virtualSize())
+  const numBytes = BigInt(expectedTx.virtualSize())
+  console.log(numBytes)
+  return numBytes
 }

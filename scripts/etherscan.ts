@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { saveLogs } from '../src/common_utils'
 import { Chain } from '../src/types'
-import { rpcUrls, etherscanUrls } from '../src/constants'
+import { rpcUrls, etherscanUrls, apiKeys } from '../src/constants'
 import { getOneInchAddress } from '../src/evm_utils'
 import axios from 'axios'
 
@@ -106,14 +106,6 @@ async function handleOneInchByEtherscan(
   } else {
     console.log(`get no any txs from ${networkName}`)
   }
-}
-
-const apiKeys = {
-  [Chain.Optimism]: 'DAFYQIQZRSHHJAKI537DUG34I5EISE6TYR',
-  [Chain.Ethereum]: '9K1972CHBWVUHDIHH925J8Q9F9369RK6IH',
-  [Chain.Arbitrum]: '34DMWUNIFUBU89E9X6H7E8PGT1U6QVDJHV',
-  [Chain.Base]: 'HSX9552HB65CH8AVDQ4Y45V9S9XTHPERNJ',
-  [Chain.BSC]: '8VIU3SVRIUYRTP492AC8ZQGBVUDDV7MGV5'
 }
 
 async function main() {

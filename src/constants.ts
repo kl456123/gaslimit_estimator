@@ -58,3 +58,22 @@ export const etherscanUrls: UrlMapping = {
   [Chain.Base]: 'https://api.basescan.org/api',
   [Chain.BSC]: 'https://api.bscscan.com/api'
 }
+
+export const apiKeys = {
+  [Chain.Optimism]: 'DAFYQIQZRSHHJAKI537DUG34I5EISE6TYR',
+  [Chain.Ethereum]: '9K1972CHBWVUHDIHH925J8Q9F9369RK6IH',
+  [Chain.Arbitrum]: '34DMWUNIFUBU89E9X6H7E8PGT1U6QVDJHV',
+  [Chain.Base]: 'HSX9552HB65CH8AVDQ4Y45V9S9XTHPERNJ',
+  [Chain.BSC]: '8VIU3SVRIUYRTP492AC8ZQGBVUDDV7MGV5'
+}
+
+export const tokens = {
+  [Chain.Ethereum]: {
+    usdt: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+    usdc: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
+  },
+  [Chain.BSC]: {
+    usdt: '0x55d398326f99059fF775485246999027B3197955',
+    usdc: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d'
+  }
+}

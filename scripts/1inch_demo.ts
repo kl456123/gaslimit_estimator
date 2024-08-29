@@ -64,12 +64,8 @@ async function requestSwap(
   chainId: number,
   walletAddress: string
 ) {
-  const swapTransaction = await requestFrom1Inch(
-    'swap',
-    swapParams,
-    chainId
-  )
-  const rawTx = swapTransaction.tx
+  const swapResp = await requestFrom1Inch('swap', swapParams, chainId)
+  const rawTx = swapResp.tx
   const data = iface.encodeFunctionData('callOneInch', [
     swapParams.src,
     swapParams.dst,
@@ -100,7 +96,7 @@ async function main() {
     origin: walletAddress,
     slippage: 1, // Maximum acceptable slippage percentage for the swap (e.g., 1 for 1%)
     includeGas: false,
-    disableEstimate: false, // Set to true to disable estimation of swap details
+    disableEstimate: true, // Set to true to disable estimation of swap details
     allowPartialFill: false // Set to true to allow partial filling of the swap order
   }
   const wallet = new ethers.Wallet(

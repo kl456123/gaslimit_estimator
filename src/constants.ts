@@ -56,7 +56,11 @@ export const etherscanUrls: UrlMapping = {
   [Chain.Optimism]: 'https://api-optimistic.etherscan.io/api',
   [Chain.Arbitrum]: 'https://api.arbiscan.io/api',
   [Chain.Base]: 'https://api.basescan.org/api',
-  [Chain.BSC]: 'https://api.bscscan.com/api'
+  [Chain.BSC]: 'https://api.bscscan.com/api',
+  [Chain.Fantom]: 'https://api.ftmscan.com/api',
+  [Chain.Polygon]: 'https://api.polygonscan.com/api',
+  [Chain.Gnosis]: 'https://api.gnosisscan.io/api',
+  [Chain.opBNB]: 'https://api-opbnb.bscscan.com/api'
 }
 
 export const apiKeys = {
@@ -64,7 +68,11 @@ export const apiKeys = {
   [Chain.Ethereum]: '9K1972CHBWVUHDIHH925J8Q9F9369RK6IH',
   [Chain.Arbitrum]: '34DMWUNIFUBU89E9X6H7E8PGT1U6QVDJHV',
   [Chain.Base]: 'HSX9552HB65CH8AVDQ4Y45V9S9XTHPERNJ',
-  [Chain.BSC]: '8VIU3SVRIUYRTP492AC8ZQGBVUDDV7MGV5'
+  [Chain.BSC]: '8VIU3SVRIUYRTP492AC8ZQGBVUDDV7MGV5',
+  [Chain.Fantom]: 'H2STAG1HV5NAKFMYKHKU6SWNRPXXD47873',
+  [Chain.Polygon]: 'SWZNZAZS9JU75B5WP3HEDSV3ZPQ9HFZSWI',
+  [Chain.Gnosis]: '24T3WAA687VKB278BHNMBVPXVEZSPRW2GR',
+  [Chain.opBNB]: 'PKEAHEUI9QJTBKW1TYSNXGEBR924T85KN5'
 }
 
 export const tokens = {
